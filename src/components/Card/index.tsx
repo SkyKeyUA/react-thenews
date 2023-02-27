@@ -1,18 +1,10 @@
 /** @format */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TheNews } from '../../redux/thenews/type';
 import styles from './Card.module.scss';
 
-type CardProps = {
-  id: string;
-  imageUrl: string;
-  data: string;
-  title: string;
-  subtitle: string;
-};
-console.log(styles);
-
-export const Card: React.FC<CardProps> = ({ id, imageUrl, data, title, subtitle }) => {
+export const Card: React.FC<TheNews> = ({ id, imageUrl, time, title, subtitle }) => {
   return (
     <div className={styles['content__card']}>
       <Link to="">
@@ -51,7 +43,7 @@ export const Card: React.FC<CardProps> = ({ id, imageUrl, data, title, subtitle 
               fill="#575757"
             />
           </svg>
-          {data}
+          {time}
         </Link>
       </div>
       <div className={styles['content__title']}>
