@@ -9,9 +9,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route path="" element={<Home />} />
-        <Route path="/thenews/:id" element={<FullTheNews />} />
+        <Route path="/" element={<Home />} />
       </Route>
+      <Route path="/thenews/:id" element={<FullTheNews />} />
     </Routes>
   );
 }
