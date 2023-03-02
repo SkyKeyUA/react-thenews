@@ -1,10 +1,20 @@
 /** @format */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectFilter } from '../../redux/filter/selectors';
 import { TheNews } from '../../redux/thenews/type';
+import { Highlight } from '../Highlight';
 import styles from './Card.module.scss';
 
 export const Card: React.FC<TheNews> = ({ id, imageUrl, time, title, subtitle }) => {
+  const { searchValue } = useSelector(selectFilter);
+  const light = React.useCallback(
+    (str: string) => {
+      return <Highlight str={str} />;
+    },
+    [searchValue],
+  );
   return (
     <div className={styles['content__card']}>
       <Link key={id} to={`/thenews/${id}`}>
@@ -48,12 +58,12 @@ export const Card: React.FC<TheNews> = ({ id, imageUrl, time, title, subtitle })
       </div>
       <div className={styles['content__title']}>
         <Link key={id} to={`/thenews/${id}`}>
-          {title}
+          {light(title)}
         </Link>
       </div>
       <div className={styles['content__subtitle']}>
         <Link key={id} to={`/thenews/${id}`}>
-          {subtitle.length > 100 ? `${subtitle.slice(0, 100)}...` : subtitle}
+          {light(subtitle.length > 100 ? `${subtitle.slice(0, 100)}...` : subtitle)}
         </Link>
       </div>
       <button className={styles['content__btn']}>
