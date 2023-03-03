@@ -17,11 +17,11 @@ export const Card: React.FC<TheNews> = ({ id, imageUrl, time, title, subtitle })
   );
   return (
     <div className={styles['content__card']}>
-      <Link key={id} to={`/thenews/${id}`}>
+      <Link key={id} to={`/react-thenews/thenews/${id}`}>
         <img src={imageUrl} alt="ImgNews" className={styles['content__image']} />
       </Link>
       <div className={styles['content__data']}>
-        <Link key={id} to={`/thenews/${id}`}>
+        <Link key={id} to={`/react-thenews/thenews/${id}`}>
           <svg
             width="16"
             height="16"
@@ -57,17 +57,17 @@ export const Card: React.FC<TheNews> = ({ id, imageUrl, time, title, subtitle })
         </Link>
       </div>
       <div className={styles['content__title']}>
-        <Link key={id} to={`/thenews/${id}`}>
+        <Link key={id} to={`/react-thenews/thenews/${id}`}>
           {light(title)}
         </Link>
       </div>
       <div className={styles['content__subtitle']}>
-        <Link key={id} to={`/thenews/${id}`}>
+        <Link key={id} to={`/react-thenews/thenews/${id}`}>
           {light(subtitle.length > 100 ? `${subtitle.slice(0, 100)}...` : subtitle)}
         </Link>
       </div>
       <button className={styles['content__btn']}>
-        <Link key={id} to={`/thenews/${id}`}>
+        <Link key={id} to={`/react-thenews/thenews/${id}`}>
           Read more
           <svg
             width="12"

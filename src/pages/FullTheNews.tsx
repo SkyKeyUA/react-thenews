@@ -19,7 +19,7 @@ const FullTheNews: React.FC = () => {
         setTheNews(data);
       } catch {
         alert('Mistake when receiving data a thenews');
-        navigate('/');
+        navigate('/react-thenews/');
       }
     }
     fetchTheNews();
@@ -30,14 +30,14 @@ const FullTheNews: React.FC = () => {
   return (
     <div className="wrapper">
       <main className="thenews">
-        <img className="thenews__image" src={theNews.imageUrl} alt="ImgNews" />
+        <img className="thenews__image" src={`../${theNews.imageUrl}`} alt="ImgNews" />
         <div className="thenews__container">
           <div className="thenews__info">
             <div className="thenews__title">{theNews.title}</div>
             <div className="thenews__subtitle">{theNews.subtitle}</div>
           </div>
           <button className="thenews__btn">
-            <Link key={id} to="/">
+            <Link key={id} to="/react-thenews/">
               <svg
                 width="12"
                 height="10"

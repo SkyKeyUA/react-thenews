@@ -13,6 +13,12 @@ const Home: React.FC = () => {
   const { items, status } = useSelector(selectTheNewsData);
   const dispatch = useAppDispatch();
   const { searchValue } = useSelector(selectFilter);
+  const itemsFilter = items.filter((obj) => {
+    return (
+      obj.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+      obj.subtitle.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  });
   React.useEffect(() => {
     dispatch(fetchTheNews());
   }, [dispatch]);
@@ -20,18 +26,11 @@ const Home: React.FC = () => {
 
   return (
     <main className="content">
-      <div className="content__result">Results: {items.length}</div>
+      <div className="content__result">Results: {itemsFilter.length}</div>
       <div className="content__items">
         {status === 'loading'
           ? skeletons
-          : items
-              .filter((obj) => {
-                return (
-                  obj.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-                  obj.subtitle.toLowerCase().includes(searchValue.toLowerCase())
-                );
-              })
-              .map((obj: any) => <Card key={obj.id} {...obj} />)}
+          : itemsFilter.map((obj: any) => <Card key={obj.id} {...obj} />)}
       </div>
     </main>
   );
